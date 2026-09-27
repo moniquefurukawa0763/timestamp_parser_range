@@ -1,0 +1,14 @@
+[project]
+name = "timestamp-parser-range"
+version = "0.1.0"
+description = "Parses ISO 8601 timestamps with optional fractional seconds and UTC offset, raising a ValueError on ambiguous or non-compliant strings."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
