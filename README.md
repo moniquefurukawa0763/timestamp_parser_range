@@ -34,3 +34,10 @@ A timestamp without an offset and a timestamp with `+00:00` are **not comparable
 - `TimestampRange(start, stop)` — half-open range; iterable, supports `in`.
 - `TimestampParseError` — subclass of `ValueError`, raised on every rejection.
 - `ParsedTimestamp` — returned by `parse_timestamp`; carries `.dt` (a `datetime`), `.offset` (a `timedelta` or `None`), `.has_offset`, and `.is_utc`.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
